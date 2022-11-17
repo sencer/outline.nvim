@@ -91,7 +91,7 @@ local function get_qf_items(bufnr)
 	return flatten_and_build_qf_format(items, bufnr)
 end
 
-M.outline = function(bufnr)
+M.toggle = function(bufnr)
 	if vim.t.outline_window then
 		vim.api.nvim_win_close(vim.t.outline_window, true)
 		return
@@ -109,7 +109,7 @@ M.outline = function(bufnr)
 	vim.fn.setloclist(vim.fn.bufwinnr(bufnr), {}, " ", {
 		nr = "$",
 		title = "Outline",
-		quickfixtextfunc = require("quickfix.format").text,
+		quickfixtextfunc = require("sencer.format").text,
 		items = items,
 	})
 
